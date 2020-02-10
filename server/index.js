@@ -37,7 +37,13 @@ app.use((req, res, next) => {
   next();
 });
 
-
+// redirect Example
+const targetBaseUrl = "https://www.steelscout.com/en-GB";
+function handleRedirect( req, res) {
+  const targetUrl = targetBaseUrl + req.originalUrl;
+  res.redirect(targetUrl);
+}
+app.get('/get-quote', handleRedirect);
 
 //app.use(express.static('./build'));
 app.use('/', express.static('./build'));
@@ -47,6 +53,8 @@ app.use('/api', apiVersion1);
 app.use(express.static('./build'));
 
 app.get('/*', renderRouterMiddleware);
+
+
   
 app.listen(PORT, () => {
     console.log(`😎 Server is listening on port ${PORT}`);

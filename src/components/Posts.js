@@ -38,9 +38,11 @@ class Posts extends Component {
     return (
         <div className="container">
             <h1>Latest Posts</h1>
-            <ol>
-                {data.map(post => <li key={post.id}>{post.title}</li>)} 
-            </ol>
+            <ul>
+                {data.map(post => <li key={post.id}>
+                                    <blockquote>{post.title}</blockquote>
+                                   </li>)} 
+            </ul>
         </div>);
   }
 }
