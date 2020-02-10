@@ -12,7 +12,7 @@ import renderRouterMiddleware from '../iso-middleware/renderRoute';
 
 acceptLanguage.languages(['en', 'de']);
 const app = express();
-const PORT = process.env.PORT || 3006;
+const PORT = process.env.PORT || 3000;
 app.use(logger('short'));
 
 

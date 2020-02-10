@@ -11,13 +11,13 @@ class Home extends React.Component {
     }
     componentWillMount() {
       // Get hello message
-      this.callApi('http://localhost:3006/api/hello')
+      this.callApi('http://localhost:3000/api/hello')
         .then(res => this.setState({ resHello: res.express }))
         .catch(err => console.log(err));
   
       // Get random quote
       const rand = Math.random();
-      this.callApi(`http://localhost:3006/api/quote/${rand}`)
+      this.callApi(`http://localhost:3000/api/quote/${rand}`)
         .then(res => this.setState({ resQuote: res.express }))
         .catch(err => console.log(err));
     }
