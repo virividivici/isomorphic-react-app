@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import loadData from '../helpers/loadData';
 
-class Posts extends Component {
+class About extends Component {
     constructor(props) {
       super(props);
   
@@ -24,7 +24,7 @@ class Posts extends Component {
           });
           delete window.__ROUTE_DATA__;
         } else {
-          loadData('posts').then(data => {
+          loadData('about').then(data => {
             this.setState({
               data
             });
@@ -35,14 +35,8 @@ class Posts extends Component {
   
   render() {
     const { data } = this.state;
-    return (
-        <div className="container">
-            <h1>Latest Posts</h1>
-            <ol>
-                {data.map(post => <li key={post.id}>{post.title}</li>)} 
-            </ol>
-        </div>);
+    return <ul>{data.map(todo => <li key={todo.id}>{todo.title}</li>)}</ul>;
   }
 }
   
-export default Posts;
+export default About;

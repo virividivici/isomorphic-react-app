@@ -1,15 +1,18 @@
 import express from 'express';
+import http from 'http';
 import logger from 'morgan';
-
+import path from 'path';
 import cookieParser from 'cookie-parser';
 import acceptLanguage from 'accept-language';
+import apiVersion1 from './api/api1';
 import renderRouterMiddleware from '../iso-middleware/renderRoute';
+
 
 // Configuration ===============================================================
 
 acceptLanguage.languages(['en', 'de']);
-const PORT = process.env.PORT || 3006;
 const app = express();
+const PORT = process.env.PORT || 3006;
 app.use(logger('short'));
 
 
@@ -33,6 +36,13 @@ app.use((req, res, next) => {
   res.cookie('locale', locale, { maxAge: (new Date() * 0.001) + (365 * 24 * 3600) });
   next();
 });
+
+
+
+//app.use(express.static('./build'));
+app.use('/', express.static('./build'));
+
+app.use('/api', apiVersion1);
 
 app.use(express.static('./build'));
 

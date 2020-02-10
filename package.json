@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "accept-language": "^3.0.18",
+    "babel-cli": "^6.26.0",
+    "babel-register": "^6.26.0",
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
     "isomorphic-fetch": "^2.2.1",

@@ -8,22 +8,28 @@ function App() {
     <div className="App">
       <nav>
         <div className="nav-wrapper">
-           <a href="/" className="brand-logo">Isomorphic Prototype</a>
+           <a href="/" className="brand-logo"><h4>Isomorphic Prototype</h4></a>
             <ul id="nav-mobile" className="right">
               <li>
                 <NavLink to="/">Home</NavLink>
               </li>
               <li>
-                <NavLink to="/todos">Todos</NavLink>
+                <NavLink to="/about">about</NavLink>
               </li>
               <li>
                 <NavLink to="/posts">Posts</NavLink>
               </li>
+              <li>
+                <NavLink to="/todos">Todos</NavLink>
+              </li>
+            
             </ul>
           </div>
         </nav>
       <Switch>
-        {renderRoutes(Routes)}
+        <div className="container">
+         {renderRoutes(Routes)}
+         </div>
       </Switch>
     </div>
   );
