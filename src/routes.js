@@ -1,9 +1,9 @@
 import App from './App';
-import Home from './components/Home';
-import About from './components/Todos';
-import Posts from './components/Posts';
-import Todos from './components/Todos';
-import NotFound from './components/NotFound';
+import Home from './containers/Home';
+import About from './containers/Todos';
+import Posts from './containers/Posts';
+import Todos from './containers/Todos';
+import NotFound from './containers/NotFound';
 
 import loadData from './helpers/loadData';
 

@@ -2,6 +2,7 @@ import React from 'react';
 import path from 'path';
 import fs from 'fs';
 import ReactDOMServer from 'react-dom/server';
+import { IntlProvider } from 'react-intl';
 import serialize from 'serialize-javascript';
 import { StaticRouter } from 'react-router-dom';
 import { matchRoutes } from 'react-router-config';
@@ -28,6 +29,12 @@ export default function renderRoute(req, res) {
   routes and then call Promise.all on all matching routes to resolve the loadData promise of each matching route.
   */
   const matchingRoutes = matchRoutes(Routes, req.url);
+  
+  const locale = req.cookies.locale;
+  const messages = {};
+  ['en', 'de'].forEach((locale) => {
+    messages[locale] = require(`../public/translation/${locale}.json`);
+  });
 
   let promises = [];
 
@@ -43,7 +50,9 @@ export default function renderRoute(req, res) {
 
     const app = ReactDOMServer.renderToString(
       <StaticRouter location={req.url} context={context}>
-        <App />
+        <IntlProvider locale={locale} messages={messages[locale]}>
+          <App />
+        </IntlProvider>  
       </StaticRouter>
     );
 

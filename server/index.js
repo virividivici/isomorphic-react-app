@@ -21,6 +21,7 @@ app.use(logger('short'));
 // If none are found, then you’d fall back to the website’s default locale.
 // For returning users, we will check the cookie’s value instead.
 app.use(cookieParser());
+app.use('/public/translation', express.static('public/translation'));
 
 function detectLocale(req) {
   const cookieLocale = req.cookies.locale;

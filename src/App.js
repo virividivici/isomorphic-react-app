@@ -1,9 +1,13 @@
 import React from 'react';
 import { renderRoutes } from 'react-router-config';
 import { Switch, NavLink } from 'react-router-dom';
+import { useIntl } from 'react-intl';
 import Routes from './routes';
+import LocaleButton from './common/components/LocaleButton';
 
 function App() {
+  const { messages, locale } = useIntl();
+
   return (
     <div className="App">
       <nav>
@@ -22,12 +26,16 @@ function App() {
               <li>
                 <NavLink to="/todos">Todos</NavLink>
               </li>
-            
+              <li>
+              <LocaleButton locale={locale} />
+              </li>
             </ul>
           </div>
         </nav>
+        
       <Switch>
         <div className="container">
+        <h1>{messages['app.hello_world2']}</h1>
          {renderRoutes(Routes)}
          </div>
       </Switch>

@@ -1,5 +1,6 @@
 import React from 'react';
 import fetch from 'isomorphic-fetch'; 
+import { FormattedMessage } from 'react-intl';
 
 class Home extends React.Component {
     constructor(props) {
@@ -9,6 +10,8 @@ class Home extends React.Component {
         resQuote: 'Loading...'
       };
     }
+
+
     componentWillMount() {
       // Get hello message
       this.callApi('http://localhost:3000/api/hello')
@@ -36,7 +39,8 @@ class Home extends React.Component {
         <div>
           <div className="container">
             <h1>Home page</h1>
-           
+            <h1><FormattedMessage id="app.hello_world" defaultMessage="Hello World!" description="Hello world header greeting" /></h1>
+          
             <h6>
               {`Static content from the server: ${this.state.resHello}`}
             </h6>
